@@ -74,38 +74,46 @@
         }
         /* Botão Voltar flutuante */
 #back-btn {
-    position: fixed;
-    top: 20px;
-    left: 20px; 
-    background: linear-gradient(135deg, #0d1b2a 0%, #1b263b 100%);
-    color: #8ecae6;
-    border: 2px solid #415a77;
-    padding: 15px 25px;
-    border-radius: 30px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 16px;
-    z-index: 10000;
-    transition: all 0.3s;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  padding: 8px 14px;              /* ↓ menor */
+  border-radius: 22px;            /* ↓ mais compacto */
+  cursor: pointer;
+  font-weight: 600;               /* ↓ peso menor */
+  font-size: 13px;                /* ↓ fonte menor */
+  z-index: 10000;
+  display: none;
+  border: 1.5px solid transparent; /* ↓ borda mais fina */
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, color 0.18s ease;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.15); /* ↓ sombra menor */
+  display: flex;
+  align-items: center;
+  gap: 6px;                        /* ↓ espaçamento interno */
+  background: linear-gradient(135deg, #ffffff 0%, #f3f4f6 100%);
+  color: #333;
 }
 
-/* Hover */
 #back-btn:hover {
-    background: linear-gradient(135deg, #1b263b 0%, #415a77 100%);
-    transform: scale(1.05);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.7);
+  transform: translateY(-2px);
+  box-shadow: 0 7px 20px rgba(0,0,0,0.25);
+  background: linear-gradient(135deg, #f7f7f9 0%, #e9eef8 100%);
 }
 
-/* Modo Lovecraft */
+/* Tema Lovecraft diminuído */
 body.lovecraft #back-btn {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    border-color: #764ba2;
+  background: linear-gradient(135deg, rgba(18, 30, 45, 0.95) 0%, rgba(28, 44, 65, 0.95) 100%);
+  color: #bfeafc;
+  border: 1.5px solid rgba(33, 98, 128, 0.18);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.55);
 }
+
+body.lovecraft #back-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.65);
+  background: linear-gradient(135deg, rgba(22, 36, 58, 0.98) 0%, rgba(34, 56, 86, 0.98) 100%);
+}
+
 
 
         .theme-toggle:hover {
@@ -137,6 +145,7 @@ body.lovecraft #back-btn {
             margin-bottom: 30px;
             text-align: center;
             transition: all 0.5s ease;
+            position: relative;
         }
 
         body.lovecraft .header {
@@ -609,6 +618,26 @@ body.lovecraft #back-btn {
             margin-bottom: 20px;
             transition: all 0.5s;
         }
+        /* Ajuste do título no mobile para o tema Lovecraft */
+@media (max-width: 768px) {
+    body.lovecraft .hero-title {
+        font-size: 2em !important;
+        line-height: 1.2;
+        word-wrap: break-word;
+        text-align: center;
+    }
+    
+    body.lovecraft .home-hero {
+        padding: 40px 20px !important;
+    }
+    @media (max-width: 480px) {
+    body.lovecraft .hero-title {
+        font-size: 1.6em !important;
+    }
+}
+
+}
+
 
         body.lovecraft .hero-title {
             color: #8ecae6;
@@ -638,7 +667,7 @@ body.lovecraft #back-btn {
     <span id="theme-text"></span>
 </button>
 
-<button id="back-btn" onclick="goBack()" style="display: none;">⬅ Voltar</button>
+<button id="back-btn" onclick="goBack()" style="display: none;">⬅ Voltar </button>
 
     
     <div class="container">
