@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BurgerExpress - Fast Food</title>
     <style>
+        
         * {
             margin: 0;
             padding: 0;
@@ -71,6 +72,41 @@
             align-items: center;
             gap: 8px;
         }
+        /* Botão Voltar flutuante */
+#back-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px; 
+    background: linear-gradient(135deg, #0d1b2a 0%, #1b263b 100%);
+    color: #8ecae6;
+    border: 2px solid #415a77;
+    padding: 15px 25px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    z-index: 10000;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Hover */
+#back-btn:hover {
+    background: linear-gradient(135deg, #1b263b 0%, #415a77 100%);
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.7);
+}
+
+/* Modo Lovecraft */
+body.lovecraft #back-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-color: #764ba2;
+}
+
 
         .theme-toggle:hover {
             background: linear-gradient(135deg, #1b263b 0%, #415a77 100%);
@@ -156,7 +192,9 @@
             flex-wrap: wrap;
             margin-bottom: 20px;
             justify-content: center;
+            
         }
+        
 
         .nav-btn {
             padding: 12px 25px;
@@ -595,9 +633,13 @@
     </style>
 </head>
 <body>
-    <button class="theme-toggle" onclick="toggleTheme()">
-        <span id="theme-icon">🐙</span> <span id="theme-text">Modo Lovecraft</span>
-    </button>
+   <button class="theme-toggle" onclick="toggleTheme()">
+    <span id="theme-icon">🐙</span>
+    <span id="theme-text"></span>
+</button>
+
+<button id="back-btn" onclick="goBack()" style="display: none;">⬅ Voltar</button>
+
     
     <div class="container">
         <div class="header">
@@ -606,7 +648,6 @@
         </div>
 
              <div class="nav-buttons">
-            <button class="nav-btn" id="back-btn" style="display: none;" onclick="goBack()">← Voltar</button>
             <button class="nav-btn active" onclick="showScreen('home')">🏠 Início</button>
             <button class="nav-btn" onclick="showScreen('burgers')">🍔 Burgers</button>
             <button class="nav-btn" onclick="showScreen('sides')">🍟 Acompanhamentos</button>
@@ -861,11 +902,11 @@
             
             if (lovecraftMode) {
                 icon.textContent = '🍔';
-                text.textContent = 'Modo Normal';   
+                text.textContent = '';   
                 showNotification('Ph\'nglui mglw\'nafh Cthulhu R\'lyeh wgah\'nagl fhtagn! 🐙');
             } else {
                 icon.textContent = '🐙';
-                text.textContent = 'Modo Lovecraft';
+                text.textContent = '';
                 showNotification('Bem-vindo de volta à realidade! 🍔');
             }
         }
